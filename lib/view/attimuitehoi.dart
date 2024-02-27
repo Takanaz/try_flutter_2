@@ -119,7 +119,7 @@ class _AttimuitehoiPageState extends State<AttimuitehoiPage> {
                       },
                       child: Text('←'),
                     ),
-                    SizedBox(width: 24),
+                    SizedBox(width: 48),
                     ElevatedButton(
                       onPressed: () {
                         setMyDirection(Icon(Icons.east_rounded, size: 24));
