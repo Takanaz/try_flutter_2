@@ -23,10 +23,10 @@ class _TopPageState extends State<TopPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 32),
-              Text('Select the Game you want to play!',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               SizedBox(height: 48),
+              Text('Select the game you want to play!',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              SizedBox(height: 96),
               ElevatedButton(
                 onPressed: () {
                   context.go('/janken');
@@ -39,7 +39,7 @@ class _TopPageState extends State<TopPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
                   context.go('/attimuitehoi');
