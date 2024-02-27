@@ -48,13 +48,13 @@ class _JankenPageState extends State<JankenPage> {
   Icon randomNumToHand(int randomNum) {
     switch (randomNum) {
       case 0:
-        return Icon(Icons.sports_mma_outlined);
+        return Icon(Icons.sports_mma_outlined, color: Colors.red, size: 24);
       case 1:
-        return Icon(Icons.pan_tool_alt_outlined);
+        return Icon(Icons.pan_tool_alt_outlined, color: Colors.green, size: 27);
       case 2:
-        return Icon(Icons.back_hand_outlined);
+        return Icon(Icons.back_hand_outlined, color: Colors.blue, size: 21);
       default:
-        return Icon(Icons.sports_mma_outlined);
+        return Icon(Icons.sports_mma_outlined, color: Colors.red, size: 24);
     }
   }
 
@@ -96,6 +96,7 @@ class _JankenPageState extends State<JankenPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('じゃんけん'),
+        backgroundColor: Colors.purple.shade100,
       ),
       body: Center(
         child: Column(
@@ -109,35 +110,41 @@ class _JankenPageState extends State<JankenPage> {
               '勝率: ${winRate.toString()} %',
               style: TextStyle(fontSize: 24),
             ),
+            SizedBox(height: 24),
             Text(
               '結果: $result',
               style: TextStyle(fontSize: 32),
             ),
             SizedBox(height: 48),
             computerHand,
-            SizedBox(height: 48),
+            SizedBox(height: 24),
+            Text('VS', style: TextStyle(fontSize: 24)),
+            SizedBox(height: 24),
             myHand,
-            SizedBox(height: 16),
+            SizedBox(height: 48),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 ElevatedButton(
                   onPressed: () {
-                    setMyHand(Icon(Icons.sports_mma_outlined));
+                    setMyHand(Icon(Icons.sports_mma_outlined,
+                        color: Colors.red, size: 24));
                   },
                   child: Icon(Icons.sports_mma_outlined,
                       color: Colors.red, size: 32),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    setMyHand(Icon(Icons.pan_tool_alt_outlined));
+                    setMyHand(Icon(Icons.pan_tool_alt_outlined,
+                        color: Colors.green, size: 27));
                   },
                   child: Icon(Icons.pan_tool_alt_outlined,
-                      color: Colors.green, size: 32),
+                      color: Colors.green, size: 36),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    setMyHand(Icon(Icons.back_hand_outlined));
+                    setMyHand(Icon(Icons.back_hand_outlined,
+                        color: Colors.blue, size: 21));
                   },
                   child: Icon(Icons.back_hand_outlined,
                       color: Colors.blue, size: 28),
