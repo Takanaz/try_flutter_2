@@ -58,30 +58,22 @@ class _JankenPageState extends State<JankenPage> {
   void setMyHand(Icon setMyHand) {
     myHand = setMyHand;
     generateComputerHand();
+    judge();
     setState(() {});
   }
 
   void judge() {
-    if (myHand == computerHand) {
+    if (myHand.icon == computerHand.icon) {
       result = '引き分け';
-    } else if (myHand.icon == Icons.sports_mma_outlined) {
-      if (computerHand.icon == Icons.pan_tool_alt_outlined) {
-        result = '勝ち';
-      } else {
-        result = '負け';
-      }
-    } else if (myHand.icon == Icons.pan_tool_alt_outlined) {
-      if (computerHand.icon == Icons.back_hand_outlined) {
-        result = '勝ち';
-      } else {
-        result = '負け';
-      }
-    } else if (myHand.icon == Icons.back_hand_outlined) {
-      if (computerHand.icon == Icons.sports_mma_outlined) {
-        result = '勝ち';
-      } else {
-        result = '負け';
-      }
+    } else if (myHand.icon == Icons.sports_mma_outlined &&
+            computerHand.icon == Icons.pan_tool_alt_outlined ||
+        myHand.icon == Icons.pan_tool_alt_outlined &&
+            computerHand.icon == Icons.back_hand_outlined ||
+        myHand.icon == Icons.back_hand_outlined &&
+            computerHand.icon == Icons.sports_mma_outlined) {
+      result = '勝ち';
+    } else {
+      result = '負け';
     }
   }
 
