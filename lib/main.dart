@@ -35,6 +35,9 @@ class _JankenPageState extends State<JankenPage> {
   Icon computerHand = Icon(Icons.sports_mma_outlined);
   Icon myHand = Icon(Icons.sports_mma_outlined);
   String result = '引き分け';
+  num battleCount = 0;
+  num winCount = 0;
+  num winRate = 0;
 
   void generateComputerHand() {
     Random().nextInt(3);
@@ -59,6 +62,8 @@ class _JankenPageState extends State<JankenPage> {
     myHand = setMyHand;
     generateComputerHand();
     judge();
+    battleCount++;
+    winRateCalc();
     setState(() {});
   }
 
@@ -72,8 +77,17 @@ class _JankenPageState extends State<JankenPage> {
         myHand.icon == Icons.back_hand_outlined &&
             computerHand.icon == Icons.sports_mma_outlined) {
       result = '勝ち';
+      winCount++;
     } else {
       result = '負け';
+    }
+  }
+
+  void winRateCalc() {
+    if (battleCount == 0) {
+      winRate = 0;
+    } else {
+      winRate = (((winCount) / (battleCount) * 100).round());
     }
   }
 
@@ -87,6 +101,14 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              '${winCount.toString()} / ${battleCount.toString()}',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              '勝率: ${winRate.toString()} %',
+              style: TextStyle(fontSize: 24),
+            ),
             Text(
               '結果: $result',
               style: TextStyle(fontSize: 32),
@@ -103,21 +125,34 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     setMyHand(Icon(Icons.sports_mma_outlined));
                   },
-                  child: Icon(Icons.sports_mma_outlined),
+                  child: Icon(Icons.sports_mma_outlined,
+                      color: Colors.red, size: 32),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     setMyHand(Icon(Icons.pan_tool_alt_outlined));
                   },
-                  child: Icon(Icons.pan_tool_alt_outlined),
+                  child: Icon(Icons.pan_tool_alt_outlined,
+                      color: Colors.green, size: 32),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     setMyHand(Icon(Icons.back_hand_outlined));
                   },
-                  child: Icon(Icons.back_hand_outlined),
+                  child: Icon(Icons.back_hand_outlined,
+                      color: Colors.blue, size: 28),
                 ),
               ],
+            ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                battleCount = 0;
+                winCount = 0;
+                winRate = 0;
+                setState(() {});
+              },
+              child: Text('リセット'),
             ),
           ],
         ),
