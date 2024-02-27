@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../view/top.dart';
 import '../view/janken.dart';
+import '../view/attimuitehoi.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -22,6 +23,13 @@ final router = GoRouter(
       path: '/janken',
       builder: (context, state) {
         return const JankenPage();
+      },
+    ),
+    GoRoute(
+      name: 'attimuitehoi',
+      path: '/attimuitehoi',
+      builder: (context, state) {
+        return const AttimuitehoiPage();
       },
     ),
   ],
