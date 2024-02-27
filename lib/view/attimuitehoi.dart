@@ -73,7 +73,7 @@ class _AttimuitehoiPageState extends State<AttimuitehoiPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            context.go('/');
+            context.pop();
           },
         ),
         title: Text('あっち向いてホイ'),

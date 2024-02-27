@@ -17,20 +17,22 @@ final router = GoRouter(
       builder: (context, state) {
         return const TopPage();
       },
-    ),
-    GoRoute(
-      name: 'janken',
-      path: '/janken',
-      builder: (context, state) {
-        return const JankenPage();
-      },
-    ),
-    GoRoute(
-      name: 'attimuitehoi',
-      path: '/attimuitehoi',
-      builder: (context, state) {
-        return const AttimuitehoiPage();
-      },
+      routes: [
+        GoRoute(
+          name: 'janken',
+          path: 'janken',
+          builder: (context, state) {
+            return const JankenPage();
+          },
+        ),
+        GoRoute(
+          name: 'attimuitehoi',
+          path: 'attimuitehoi',
+          builder: (context, state) {
+            return const AttimuitehoiPage();
+          },
+        ),
+      ],
     ),
   ],
 );

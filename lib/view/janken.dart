@@ -78,7 +78,7 @@ class _JankenPageState extends State<JankenPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            context.go('/');
+            context.pop();
           },
         ),
         title: Text('じゃんけん'),
